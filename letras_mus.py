@@ -38,7 +38,7 @@ if __name__ == "__main__":
     reload(sys)
     sys.setdefaultencoding('utf-8')
     track_list = get_track_list(argv[1])
-    lyrics = get_lyrics_list([track["url"] for track in track_list]
+    lyrics = get_lyrics_list([track["url"] for track in track_list])
     for i, lyric in enumerate(lyrics):
         pretty_print(track_list[i]["name"], lyric)
 
