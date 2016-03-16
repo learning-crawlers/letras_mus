@@ -43,7 +43,7 @@ if __name__ == "__main__":
     import sys
 
     if len(sys.argv) != 2:
-        sys.stderr.write("usage:\n\t%s <music-url>\n" % sys.argv[0])
+        sys.stderr.write("usage:\n\t%s <artist-url>\n" % sys.argv[0])
         sys.stderr.write("example:\n\t%s mc-anitta\n" % sys.argv[0])
         sys.exit(1)
 
