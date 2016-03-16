@@ -17,9 +17,7 @@ def get_lyrics(mus_url):
     r = requests.get("https://www.letras.mus.br%s" % mus_url)
     soup = BeautifulSoup(r.text, 'html.parser')
     lyrics = soup.find("div", {"class": "cnt-letra"})
-
-    for b in lyrics.findAll("br"):
-        b.replaceWith("\n")
+    map(lambda br: br.replaceWith("\n"), lyrics.findAll("br"))
 
     return u"\n\n".join([p.text for p in lyrics.findAll("p")])
 
