@@ -13,7 +13,7 @@ def get_mus_list(artist_url):
     soup = BeautifulSoup(r.text, 'html.parser')
 
     return [(track.text, 
-             track.select("a")[0].attrs["href"])  
+             track.find("a").attrs["href"])  
                 for track in soup.findAll("li", {"itemprop":"tracks"})]
 
 def get_lyrics(mus_url):
