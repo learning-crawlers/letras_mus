@@ -1,9 +1,9 @@
-#-*- coding: utf-8 -*-
 #!/usr/bin/env python
+#-*- coding: utf-8 -*-
+
 import requests
-from sys import argv, stdout
+from sys import argv
 from bs4 import BeautifulSoup
-import locale
 import sys
 
 
@@ -32,9 +32,3 @@ if __name__ == "__main__":
         print get_lyrics(mus[1])
         print "==============================================================================================="
         print
-
-
-
-      
-
-
