@@ -8,7 +8,11 @@ from bs4 import BeautifulSoup
 def get_track_list(artist_url):
     r = requests.get("https://www.letras.mus.br/%s" % artist_url)
     soup = BeautifulSoup(r.text, 'html.parser')
-    li_tracks = soup.find("div", {"id": "cnt-artist-songlist"}).findAll("li")
+    if soup.find("div", {"id": "cnt-artist-songlist"}):
+        li_tracks = soup.find("div", {"id": "cnt-artist-songlist"}).findAll("li")
+    else:
+        li_tracks = li_tracks = soup.findAll("li", {"itemprop": "tracks"})
+    
     return [{"name": track.text,
              "url": track.find("a").attrs["href"]} for track in li_tracks]
 
