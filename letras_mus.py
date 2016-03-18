@@ -8,7 +8,7 @@ from bs4 import BeautifulSoup
 def get_track_list(artist_url):
     r = requests.get("https://www.letras.mus.br/%s" % artist_url)
     soup = BeautifulSoup(r.text, 'html.parser')
-    li_tracks = soup.findAll("li", {"itemprop": "tracks"})
+    li_tracks = soup.find("div", {"id": "cnt-artist-songlist"}).findAll("li")
     return [{"name": track.text,
              "url": track.find("a").attrs["href"]} for track in li_tracks]
 
@@ -30,10 +30,10 @@ def get_lyrics_list(url_list, pool_size=8):
 
 
 def pretty_print(mus_name, lyrics):
-    print mus_name.upper()
+    print "\33[1m" + mus_name.strip().upper()
+    print "\33[0m"
     print lyric
     print
-    print "="*80
     print
 
 
