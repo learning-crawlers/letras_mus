@@ -65,9 +65,9 @@ if __name__ == "__main__":
             pretty_print(track_list[i]["name"], lyric)
     
     else:
-        sys.stderr.write("usage:\n\t%s <artist-url> [music name]\n" % sys.argv[0])
+        sys.stderr.write("usage:\n\t%s <artist-url> [music name]\n\n" % sys.argv[0])
         sys.stderr.write("examples:\n\t%s mc-anitta\n" % sys.argv[0])
-        sys.stderr.write("\n\t%s jimi-hendrix spanish castle magic\n" % sys.argv[0])
+        sys.stderr.write("\t%s jimi-hendrix 'spanish castle magic'\n" % sys.argv[0])
         sys.exit(1)
 
     
