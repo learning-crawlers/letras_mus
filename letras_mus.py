@@ -41,17 +41,33 @@ def pretty_print(mus_name, lyrics):
     print
 
 
+def string_compare(a, b):
+    a, b = a.lower(), b.lower()
+    return a in b or b in a
+
+
 if __name__ == "__main__":
     import sys
-
-    if len(sys.argv) != 2:
-        sys.stderr.write("usage:\n\t%s <artist-url>\n" % sys.argv[0])
-        sys.stderr.write("example:\n\t%s mc-anitta\n" % sys.argv[0])
-        sys.exit(1)
-
     reload(sys)
     sys.setdefaultencoding('utf-8')
-    track_list = get_track_list(sys.argv[1])
-    lyrics = get_lyrics_list([track["url"] for track in track_list])
-    for i, lyric in enumerate(lyrics):
-        pretty_print(track_list[i]["name"], lyric)
+    
+    if len(sys.argv) == 2:
+        track_list = get_track_list(sys.argv[1])
+        lyrics = get_lyrics_list([track["url"] for track in track_list])
+        for i, lyric in enumerate(lyrics):
+            pretty_print(track_list[i]["name"], lyric)
+    
+    elif len(sys.argv) == 3:
+        track_list = get_track_list(sys.argv[1])
+        track_list = filter(lambda track: string_compare(sys.argv[2], track["name"]), track_list)
+        lyrics = get_lyrics_list([track["url"] for track in track_list])
+        for i, lyric in enumerate(lyrics):
+            pretty_print(track_list[i]["name"], lyric)
+    
+    else:
+        sys.stderr.write("usage:\n\t%s <artist-url> [music name]\n" % sys.argv[0])
+        sys.stderr.write("examples:\n\t%s mc-anitta\n" % sys.argv[0])
+        sys.stderr.write("\n\t%s jimi-hendrix spanish castle magic\n" % sys.argv[0])
+        sys.exit(1)
+
+    
