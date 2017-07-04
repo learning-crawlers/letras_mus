@@ -1,5 +1,5 @@
 ```
- $ ./letras.py 
+$ ./letras.py 
 usage:
 	./letras.py <artist-url> [music name]
 
@@ -10,7 +10,7 @@ examples:
 ```
 
 ```
- $ ./letras.py vitor-ramil | head 
+$ ./letras.py vitor-ramil | head 
 12 SEGUNDOS DE OCURIDAD
 Gira el haz de luz
 para que se vea desde alta mar.
@@ -24,7 +24,7 @@ se volvía a cerrar.
 ```
 
 ```
- $ ./letras.py vitor-ramil 'longe'
+$ ./letras.py vitor-ramil 'longe'
 LONGE DE VOCÊ
 To vivendo em outra dimensão
 Longe de você
