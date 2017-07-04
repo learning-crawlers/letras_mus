@@ -35,8 +35,9 @@ def get_lyrics_list(url_list, pool_size=8):
 
 
 def pretty_print(mus_name, lyrics):
-    print("\33[1m%s\33[0m" % mus_name.strip().upper())
-    print("%s\n\n" % lyric)
+	print("\33[1m%s\33[0m" % mus_name.strip().upper())
+	print("%s\n\n" % lyric)
+
 
 
 def string_compare(a, b):
@@ -45,7 +46,7 @@ def string_compare(a, b):
 
 
 if __name__ == "__main__":
-    import sys
+    import sys, errno
     
     if len(sys.argv) not in [2, 3]:
         sys.stderr.write("usage:\n\t%s <artist-url> [music name]\n\n" % sys.argv[0])
@@ -63,6 +64,8 @@ if __name__ == "__main__":
 
     lyrics = get_lyrics_list([track["url"] for track in track_list])
     for i, lyric in enumerate(lyrics):
-        pretty_print(track_list[i]["name"], lyric)
-
-    
+        try:
+            pretty_print(track_list[i]["name"], lyric)
+        except (BrokenPipeError, IOError):
+            sys.stderr.close() #silent errors when receive SIGPIPE e.g. when piped to `head`
+            pass 
