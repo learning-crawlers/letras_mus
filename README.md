@@ -1,5 +1,5 @@
 ```
-$ ./letras.py 
+ $ ./letras.py 
 usage:
 	./letras.py <artist-url> [music name]
 
@@ -7,6 +7,9 @@ examples:
 	./letras.py mc-anitta
 	./letras.py jimi-hendrix 'spanish castle magic'
 	./letras.py jimi-hendrix purple
+```
+
+```
  $ ./letras.py vitor-ramil | head 
 12 SEGUNDOS DE OCURIDAD
 Gira el haz de luz
@@ -18,6 +21,9 @@ Pie detrás de pie
 iba tras el pulso de claridad
 la noche cerrada, apenas se abría,
 se volvía a cerrar.
+```
+
+```
  $ ./letras.py vitor-ramil 'longe'
 LONGE DE VOCÊ
 To vivendo em outra dimensão
